@@ -1,0 +1,32 @@
+羽毛球独立入口
+
+cd /你的路径/PKUAutoVenues-2026
+./run_yumao.sh preview   预览，不联网、不下单
+./run_yumao.sh start     启动羽毛球任务，等待放号并预约
+./run_yumao.sh check     检查共用账号和依赖
+
+当前设置
+邱德拔体育馆羽毛球场（ID 60），每天 21:00–22:00。
+场地按 3、4、5、8、9 号顺序尝试，只成功约其中一个。
+配置在「羽毛球预约设置.ini」，不会改动网球的「预约设置.ini」。
+按原项目规则默认提前三天 12:00 放号，11:59 登录；可独立调整 advance_days 和 release_time。
+默认 auto_pay = false，不自动付款；抢到后按订单页提示手动付款。
+
+日期设置
+每天循环：date 留空，weekdays = 1,2,3,4,5,6,7。
+指定一天：填 date = YYYY-MM-DD，并清空 weekdays。
+默认 catch_up = false：从接下来的放号开始，也接受放号后 5 分钟内启动。
+不会一启动就补订前几天已放出的多天场地。
+若要立即补订较早已放号的场次，推荐填写具体 date 并清空 weekdays；也可主动开启 catch_up = true。
+
+与网球分别运行
+网球入口仍为 ./run.sh start，原配置不变。
+可开两个终端，分别运行羽毛球和网球。
+各自有独立的运行锁、完成记录和日志；同一种任务不重复启动。
+羽毛球运行记录在 .state/profiles/yumao/，日志在 logs/yumao/。
+两个入口共用 config.ini 的账号、验证码服务和通知设置。
+
+启动后保持终端打开、电脑联网，不要合盖。
+要停止当前窗口中的任务，按 Control+C；不会取消已经提交的订单。
+修改配置后先停止该任务，再重新启动。
+订单页：https://epe.pku.edu.cn/venue/orders

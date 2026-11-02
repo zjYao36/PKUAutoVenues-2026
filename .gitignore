@@ -1,0 +1,37 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# IDE settings
+.vscode/
+
+# macOS
+.DS_Store
+
+# Logs
+logs/
+
+# Local config
+config.ini
+
+# Local booking settings and order records
+预约设置.ini
+羽毛球预约设置.ini
+晚间网球预约设置.ini
+.state/
+
+# Local tools, credentials and backups
+.tools/
+.env
+.env.*
+*.pem
+*.key
+*.bak
+*.backup
